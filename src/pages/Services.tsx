@@ -2,6 +2,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceCard from "@/components/ServiceCard";
 import { Code, Globe, Search, Share2, Palette, Headphones, Smartphone, Database, Shield, Cloud } from "lucide-react";
+import itConsultingImg from "@/assets/services/it-consulting.jpg";
+import brandDesignImg from "@/assets/services/brand-design.jpg";
+import webDevImg from "@/assets/services/web-development.jpg";
+import seoImg from "@/assets/services/seo.jpg";
+import socialMediaImg from "@/assets/services/social-media.jpg";
+import photographyImg from "@/assets/services/photography.jpg";
 
 const Services = () => {
   const services = [
@@ -71,9 +77,39 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Featured Services with Images */}
       <section className="py-20">
         <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              { img: itConsultingImg, title: "IT Consulting", desc: "A company's website is often the first branded touchpoint experienced by consumers, which means its design and usability has never been more important." },
+              { img: brandDesignImg, title: "Brand Design", desc: "A successful brand or corporate identity will have a clear vision and be designed to speak a certain visual language, persuading and creating influence in market." },
+              { img: webDevImg, title: "Website Development", desc: "A company's website is often the first branded touchpoint experienced by consumers, which means its design and usability has never been more important." },
+              { img: seoImg, title: "SEO", desc: "Attention to your website's Search Engine Optimisation (SEO) ensures that potential clients will quickly and easily find you online." },
+              { img: socialMediaImg, title: "Social Media Marketing", desc: "The ubiquitous nature of social media means that companies need to acknowledge the significant role it plays for brand conversations had by many consumers online." },
+              { img: photographyImg, title: "Photography", desc: "Photographing company assets and operations plays an important role in corporate and stakeholder communication. It also requires considerable planning and logistic skills." },
+            ].map((item, index) => (
+              <div key={index} className="group animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="overflow-hidden rounded-lg mb-4">
+                  <img 
+                    src={item.img} 
+                    alt={item.title}
+                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground mb-4 text-sm">{item.desc}</p>
+                <a href="/services" className="text-primary font-semibold hover:underline">
+                  Learn More →
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">All Our Services</h2>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>

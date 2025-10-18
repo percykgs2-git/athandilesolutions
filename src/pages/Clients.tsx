@@ -2,6 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
+import client1 from "@/assets/clients/client-1.jpg";
+import client2 from "@/assets/clients/client-2.jpg";
+import client3 from "@/assets/clients/client-3.jpg";
 
 const Clients = () => {
   const testimonials = [
@@ -72,17 +75,17 @@ const Clients = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Companies We've Worked With</h2>
+            <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {clientLogos.map((client, index) => (
+          <div className="flex flex-wrap justify-center items-center gap-8 max-w-5xl mx-auto">
+            {[client1, client2, client3, client1, client2, client3].map((clientImg, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center p-6 bg-muted/30 rounded-lg hover:shadow-lg transition-shadow animate-fade-in"
+                className="flex items-center justify-center p-4 bg-background rounded-lg hover:shadow-lg transition-shadow animate-fade-in"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <span className="text-lg font-semibold text-muted-foreground">{client}</span>
+                <img src={clientImg} alt={`Client ${index + 1}`} className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" />
               </div>
             ))}
           </div>
