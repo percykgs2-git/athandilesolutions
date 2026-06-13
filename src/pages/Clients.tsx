@@ -52,15 +52,13 @@ const Clients = () => {
     },
   ];
 
-  const clientLogos = [
-    "TechStart Inc.",
-    "Global Solutions",
-    "Creative Agency",
-    "Finance Pro",
-    "Retail Innovations",
-    "Health Plus",
-    "Digital Ventures",
-    "Smart Systems",
+  const partners = [
+    { name: "Investec", logo: investecLogo },
+    { name: "Dynamic DNA", logo: dynamicDnaLogo },
+    { name: "Dynamic Visual Technologies", logo: dvtLogo },
+    { name: "Calus Technologies", logo: calusLogo },
+    { name: "Matlalenagri", logo: matlalenagriLogo },
+    { name: "Mercedes Benz", logo: mercedesLogo },
   ];
 
   return (
