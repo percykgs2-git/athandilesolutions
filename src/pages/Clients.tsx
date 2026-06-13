@@ -2,9 +2,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
-import client1 from "@/assets/clients/client-1.jpg";
-import client2 from "@/assets/clients/client-2.jpg";
-import client3 from "@/assets/clients/client-3.jpg";
+import investecLogo from "@/assets/partners/investec.png";
+import dynamicDnaLogo from "@/assets/partners/dynamic-dna.png";
+import dvtLogo from "@/assets/partners/dvt.svg";
+import calusLogo from "@/assets/partners/calus-technologies.png";
+import matlalenagriLogo from "@/assets/partners/matlalenagri.jpg";
+import mercedesLogo from "@/assets/partners/mercedes-benz.png";
 
 const Clients = () => {
   const testimonials = [
@@ -46,15 +49,13 @@ const Clients = () => {
     },
   ];
 
-  const clientLogos = [
-    "TechStart Inc.",
-    "Global Solutions",
-    "Creative Agency",
-    "Finance Pro",
-    "Retail Innovations",
-    "Health Plus",
-    "Digital Ventures",
-    "Smart Systems",
+  const partners = [
+    { name: "Investec", logo: investecLogo },
+    { name: "Dynamic DNA", logo: dynamicDnaLogo },
+    { name: "Dynamic Visual Technologies", logo: dvtLogo },
+    { name: "Calus Technologies", logo: calusLogo },
+    { name: "Matlalenagri", logo: matlalenagriLogo },
+    { name: "Mercedes Benz", logo: mercedesLogo },
   ];
 
   return (
@@ -90,13 +91,13 @@ const Clients = () => {
           </div>
           
           <div className="flex flex-wrap justify-center items-center gap-8 max-w-5xl mx-auto">
-            {[client1, client2, client3, client1, client2, client3].map((clientImg, index) => (
+            {partners.map((partner, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center p-4 bg-background rounded-lg hover:shadow-lg transition-shadow animate-fade-in"
+                className="flex items-center justify-center p-6 bg-card rounded-lg border border-border hover:shadow-lg transition-shadow animate-fade-in w-48 h-32"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <img src={clientImg} alt={`Client ${index + 1}`} className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" />
+                <img src={partner.logo} alt={partner.name} className="max-h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all" loading="lazy" />
               </div>
             ))}
           </div>
