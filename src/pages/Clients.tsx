@@ -94,13 +94,13 @@ const Clients = () => {
           </div>
           
           <div className="flex flex-wrap justify-center items-center gap-8 max-w-5xl mx-auto">
-            {[client1, client2, client3, client1, client2, client3].map((clientImg, index) => (
+            {partners.map((partner, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center p-4 bg-background rounded-lg hover:shadow-lg transition-shadow animate-fade-in"
+                className="flex items-center justify-center p-6 bg-card rounded-lg border border-border hover:shadow-lg transition-shadow animate-fade-in w-48 h-32"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <img src={clientImg} alt={`Client ${index + 1}`} className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all" />
+                <img src={partner.logo} alt={partner.name} className="max-h-20 w-auto object-contain grayscale hover:grayscale-0 transition-all" loading="lazy" />
               </div>
             ))}
           </div>
