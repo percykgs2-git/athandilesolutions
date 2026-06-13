@@ -48,8 +48,7 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Elfsight Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
+            <div className="space-y-6">
               <div 
                 className="elfsight-app-aae4ac89-c316-4726-92ae-4a15b9f5b853" 
                 data-elfsight-app-lazy
