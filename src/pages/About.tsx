@@ -7,12 +7,23 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">About Us</h1>
-          <p className="text-lg opacity-95 max-w-2xl mx-auto animate-fade-in">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/src/assets/hero-section/person-laptop.jpg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto px-4 text-center text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+            About Us
+          </h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto animate-fade-in">
             Pioneering digital transformation for businesses worldwide
           </p>
         </div>
@@ -25,19 +36,26 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold mb-6">Who We Are</h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                TechConsult is a leading technology consulting firm specializing in delivering innovative digital solutions. With over a decade of experience, we've helped hundreds of businesses transform their operations through cutting-edge technology.
+                Athandile Solutions is a leading technology consulting firm
+                specializing in delivering innovative digital solutions. With
+                over a decade of experience, we've helped hundreds of businesses
+                transform their operations through cutting-edge technology.
               </p>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Our team of expert developers, designers, and strategists work collaboratively to understand your unique challenges and create tailored solutions that drive real business results.
+                Our team of expert developers, designers, and strategists work
+                collaboratively to understand your unique challenges and create
+                tailored solutions that drive real business results.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                We believe in building long-term partnerships with our clients, providing ongoing support and innovation to ensure sustained growth and success.
+                We believe in building long-term partnerships with our clients,
+                providing ongoing support and innovation to ensure sustained
+                growth and success.
               </p>
             </div>
             <div className="relative">
-              <img 
-                src={aboutImage} 
-                alt="Our team at work" 
+              <img
+                src={aboutImage}
+                alt="Our team at work"
                 className="rounded-lg shadow-xl w-full h-auto"
               />
             </div>

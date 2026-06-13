@@ -35,10 +35,21 @@ const Contact = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Contact Us</h1>
-          <p className="text-lg opacity-95 max-w-2xl mx-auto animate-fade-in">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/src/assets/hero-section/contact-us.jpg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto px-4 text-center text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+            Contact Us
+          </h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto animate-fade-in">
             Let's discuss how we can help transform your business
           </p>
         </div>
@@ -125,8 +136,9 @@ const Contact = () => {
                     <div>
                       <h3 className="font-bold mb-1">Address</h3>
                       <p className="text-muted-foreground">
-                        123 Tech Street<br />
-                        Digital City, DC 12345
+                        Block A, Willow Wood Office Park<br />
+                        Cedar Road, 3rd St, Broadacres Park, <br />
+                        Johannesburg, 2021
                       </p>
                     </div>
                   </div>
@@ -137,7 +149,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+1 555 123 4567</p>
+                      <p className="text-muted-foreground">+27 72 615 3036</p>
                     </div>
                   </div>
 
@@ -147,7 +159,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Email</h3>
-                      <p className="text-muted-foreground">info@techconsult.com</p>
+                      <p className="text-muted-foreground">info@athandilesolutions.com</p>
                     </div>
                   </div>
 
@@ -159,7 +171,7 @@ const Contact = () => {
                       <h3 className="font-bold mb-1">Business Hours</h3>
                       <p className="text-muted-foreground">
                         Monday - Friday: 9:00 AM - 6:00 PM<br />
-                        Saturday: 10:00 AM - 4:00 PM<br />
+                        Saturday: 10:00 AM - 1:00 PM<br />
                         Sunday: Closed
                       </p>
                     </div>

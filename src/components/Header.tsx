@@ -21,23 +21,29 @@ const Header = () => {
     <>
       <div className="bg-primary text-primary-foreground py-2 px-4">
         <div className="container mx-auto flex justify-between items-center text-sm">
-          <div className="flex gap-4">
-            <a href="mailto:info@techconsult.com" className="hover:opacity-80 transition-opacity">
-              info@techconsult.com
+          <div className="flex flex-col gap-1 min-[670px]:flex-row min-[670px]:gap-4">
+            <a
+              href="mailto:info@athandilesolutions.com"
+              className="hover:opacity-80 transition-opacity"
+            >
+              info@athandilesolutions.com
             </a>
-            <span>+1 555 123 4567</span>
+            <span>+27 72 615 3036</span>
           </div>
         </div>
       </div>
-      
+
       <header className="bg-background border-b sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">T</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">TechConsult</span>
+              <span className="text-xl font-bold text-foreground">
+                <img
+                  src="/src/assets/logo.png"
+                  alt="Logo"
+                  className="h-11 w-auto"
+                />
+              </span>
             </Link>
 
             <div className="hidden md:flex items-center gap-6">
@@ -46,13 +52,17 @@ const Header = () => {
                   key={item.path}
                   to={item.path}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
-                    location.pathname === item.path ? "text-primary" : "text-foreground"
+                    location.pathname === item.path
+                      ? "text-primary"
+                      : "text-foreground"
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Button>Get Started</Button>
+              <Link to="/contact">
+                <Button>Get Started</Button>
+              </Link>
             </div>
 
             <Button
@@ -72,7 +82,9 @@ const Header = () => {
                   key={item.path}
                   to={item.path}
                   className={`block py-2 text-sm font-medium transition-colors hover:text-primary ${
-                    location.pathname === item.path ? "text-primary" : "text-foreground"
+                    location.pathname === item.path
+                      ? "text-primary"
+                      : "text-foreground"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >

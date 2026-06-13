@@ -12,37 +12,37 @@ const Clients = () => {
       name: "Sarah Johnson",
       company: "TechStart Inc.",
       role: "CEO",
-      content: "TechConsult transformed our digital presence completely. Their expertise in web development and attention to detail exceeded our expectations. Highly recommended!",
+      content: "Athandile Solutions transformed our digital presence completely. Their expertise in web development and attention to detail exceeded our expectations. Highly recommended!",
     },
     {
       name: "Michael Chen",
       company: "Global Solutions Ltd",
       role: "CTO",
-      content: "Working with TechConsult was a game-changer for our business. They delivered a robust solution on time and within budget. Their team is professional and highly skilled.",
+      content: "Working with Athandile Solutions was a game-changer for our business. They delivered a robust solution on time and within budget. Their team is professional and highly skilled.",
     },
     {
       name: "Emily Rodriguez",
       company: "Creative Agency Co",
       role: "Marketing Director",
-      content: "The SEO and social media marketing services from TechConsult helped us increase our online visibility by 300%. Their strategic approach is remarkable.",
+      content: "The SEO and social media marketing services from Athandile Solutions helped us increase our online visibility by 300%. Their strategic approach is remarkable.",
     },
     {
       name: "David Park",
       company: "Finance Pro",
       role: "Managing Director",
-      content: "Security and reliability were our top priorities, and TechConsult delivered perfectly. Their cybersecurity solutions gave us complete peace of mind.",
+      content: "Security and reliability were our top priorities, and Athandile Solutions delivered perfectly. Their cybersecurity solutions gave us complete peace of mind.",
     },
     {
       name: "Lisa Anderson",
       company: "Retail Innovations",
       role: "Founder",
-      content: "From concept to launch, TechConsult guided us through every step. Their e-commerce platform development was flawless and our sales have doubled.",
+      content: "From concept to launch, Athandile Solutions guided us through every step. Their e-commerce platform development was flawless and our sales have doubled.",
     },
     {
       name: "James Wilson",
       company: "Health Plus",
       role: "Operations Manager",
-      content: "The custom software solution developed by TechConsult streamlined our operations significantly. Their support team is always responsive and helpful.",
+      content: "The custom software solution developed by Athandile Solutions streamlined our operations significantly. Their support team is always responsive and helpful.",
     },
   ];
 
@@ -62,10 +62,21 @@ const Clients = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Our Clients</h1>
-          <p className="text-lg opacity-95 max-w-2xl mx-auto animate-fade-in">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/src/assets/hero-section/clients.jpg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto px-4 text-center text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+            Our Clients
+          </h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto animate-fade-in">
             Trusted by leading companies worldwide
           </p>
         </div>

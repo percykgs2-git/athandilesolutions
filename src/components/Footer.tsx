@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-bold mb-4">TechConsult</h3>
+            <h3 className="text-lg font-bold mb-4">Athandile Solutions</h3>
             <p className="text-sm opacity-90 mb-4">
               Providing end-to-end technology solutions and digital presence for businesses worldwide.
             </p>
@@ -52,22 +52,22 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>123 Tech Street, Digital City, DC 12345</span>
+                <span>Block A, Willow Wood Office Park, Cedar Road, 3rd St, Broadacres Park, Johannesburg, 2021</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <span>+1 555 123 4567</span>
+                <span>+27 72 615 3036</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>info@techconsult.com</span>
+                <span>info@athandilesolutions.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm opacity-90">
-          <p>&copy; {new Date().getFullYear()} TechConsult. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Athandile Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>

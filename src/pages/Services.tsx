@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ServiceCard from "@/components/ServiceCard";
-import { Code, Globe, Search, Share2, Palette, Headphones, Smartphone, Database, Shield, Cloud } from "lucide-react";
+import { Code, Globe, Search, Share2, Palette, Headphones, Smartphone, Database, Shield, Cloud, House, Sprout } from "lucide-react";
 import itConsultingImg from "@/assets/services/it-consulting.jpg";
 import brandDesignImg from "@/assets/services/brand-design.jpg";
 import webDevImg from "@/assets/services/web-development.jpg";
@@ -61,6 +61,16 @@ const Services = () => {
       title: "Cloud Solutions",
       description: "Migrate and manage your infrastructure in the cloud with confidence. We provide end-to-end cloud solutions that scale with your business needs.",
     },
+    {
+      icon: House,
+      title: "Hosting Solutions",
+      description: "Secure, high-performance hosting built for reliability and speed. We ensure your applications stay online, fast, and scalable—so you can focus on growing your business.",
+    },
+    {
+      icon: Sprout,
+      title: "Business Growth Through Leveraging IT",
+      description: "Empowering your business to grow and thrive in a digital-first world. We provide the tools and strategies you need to succeed.",
+    },
   ];
 
   return (
@@ -68,10 +78,21 @@ const Services = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Our Services</h1>
-          <p className="text-lg opacity-95 max-w-2xl mx-auto animate-fade-in">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/src/assets/hero-section/devices.jpg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto px-4 text-center text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+            Our Services
+          </h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto animate-fade-in">
             Comprehensive technology solutions tailored to drive your business forward
           </p>
         </div>

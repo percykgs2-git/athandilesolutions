@@ -52,10 +52,21 @@ const Careers = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Join Our Team</h1>
-          <p className="text-lg opacity-95 max-w-2xl mx-auto animate-fade-in">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/src/assets/hero-section/meeting-pc-people.jpg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/80"></div>
+
+        {/* Content */}
+        <div className="relative container mx-auto px-4 text-center text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+            Join Our Team
+          </h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto animate-fade-in">
             Build your career with a dynamic team of passionate professionals
           </p>
         </div>
@@ -114,7 +125,7 @@ const Careers = () => {
                         </div>
                       </div>
                     </div>
-                    <Button>Apply Now</Button>
+                    <Button disabled>Apply Now</Button>
                   </div>
                 </CardContent>
               </Card>

@@ -4,6 +4,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { Code, Globe, Search, Share2, Palette, Headphones } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const services = [
@@ -57,11 +58,13 @@ const Index = () => {
             See IT with US
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-95 animate-fade-in">
-            TechConsult is a pioneer in providing end-to-end web solutions and digital presence for businesses worldwide.
+            Athandile Solutions is a pioneer in providing end-to-end web solutions and digital presence for businesses worldwide.
           </p>
-          <Button size="lg" variant="secondary" className="animate-fade-in">
-            Learn More
-          </Button>
+          <Link to="/about">
+            <Button size="lg" variant="secondary" className="animate-fade-in">
+              Learn More
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -92,9 +95,11 @@ const Index = () => {
           <p className="text-lg mb-8 opacity-95 max-w-2xl mx-auto">
             Let's discuss how our expertise can help you achieve your digital goals
           </p>
-          <Button size="lg" variant="secondary">
-            Get in Touch
-          </Button>
+          <Link to="/contact">
+            <Button size="lg" variant="secondary">
+              Get in Touch
+            </Button>
+          </Link>
         </div>
       </section>
 
