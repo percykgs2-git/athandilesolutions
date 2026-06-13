@@ -5,6 +5,12 @@ import { Quote } from "lucide-react";
 import client1 from "@/assets/clients/client-1.jpg";
 import client2 from "@/assets/clients/client-2.jpg";
 import client3 from "@/assets/clients/client-3.jpg";
+import investecLogo from "@/assets/partners/investec.png";
+import dynamicDnaLogo from "@/assets/partners/dynamic-dna.png";
+import dvtLogo from "@/assets/partners/dvt.svg";
+import calusLogo from "@/assets/partners/calus-technologies.png";
+import matlalenagriLogo from "@/assets/partners/matlalenagri.jpg";
+import mercedesLogo from "@/assets/partners/mercedes-benz.png";
 
 const Clients = () => {
   const testimonials = [
