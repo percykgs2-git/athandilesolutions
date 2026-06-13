@@ -2,21 +2,33 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { useEffect } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { useState } from "react";
 
 const Contact = () => {
-  useEffect(() => {
-    // Load Elfsight platform script
-    const existingScript = document.getElementById("elfsight-platform-script");
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.id = "elfsight-platform-script";
-      script.src = "https://static.elfsight.com/platform/platform.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic would go here
+    alert("Thank you for your message! We will get back to you soon.");
+    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -47,13 +59,80 @@ const Contact = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Elfsight Contact Form */}
+            {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
-              <div 
-                className="elfsight-app-aae4ac89-c316-4726-92ae-4a15b9f5b853" 
-                data-elfsight-app-lazy
-              ></div>
+              <Card>
+                <CardContent className="p-6">
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          placeholder="Your name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="you@example.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          placeholder="+27 12 345 6789"
+                          value={formData.phone}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Subject</Label>
+                        <Input
+                          id="subject"
+                          name="subject"
+                          placeholder="How can we help?"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us about your project or inquiry..."
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="w-full">
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Contact Info */}
