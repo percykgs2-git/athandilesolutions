@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const location = useLocation();
@@ -39,8 +40,8 @@ const Header = () => {
             <Link to="/" className="flex items-center gap-2">
               <span className="text-xl font-bold text-foreground">
                 <img
-                  src="/src/assets/logo.png"
-                  alt="Logo"
+                  src={logo}
+                  alt="Athandile Solutions Logo"
                   className="h-11 w-auto"
                 />
               </span>
