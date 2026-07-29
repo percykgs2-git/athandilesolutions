@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
+import { FunctionsHttpError } from "@supabase/supabase-js";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +19,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,12 +27,36 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert("Thank you for your message! We will get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    setIsSending(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+      if (error) {
+        const details =
+          error instanceof FunctionsHttpError
+            ? await error.context.text()
+            : error.message;
+        console.error("send-contact-email failed:", details);
+        toast({
+          title: "Message not sent",
+          description: "Something went wrong. Please try again or email us directly.",
+          variant: "destructive",
+        });
+        return;
+      }
+      toast({
+        title: "Message sent",
+        description: "Thank you! We've emailed you a confirmation and will be in touch soon.",
+      });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    } finally {
+      setIsSending(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-background">
