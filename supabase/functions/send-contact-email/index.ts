@@ -1,7 +1,7 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { z } from "npm:zod@3.23.8";
 
-const GATEWAY_URL = "https://connector-gateway.lovable.dev/mailgun";
+// Recipient that receives every enquiry submitted through the Contact page.
 const ADMIN_EMAIL = "info@athandilesolutions.co.za";
 
 const BodySchema = z.object({
@@ -27,15 +27,17 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    const MAILGUN_CONNECTION_KEY = Deno.env.get("MAILGUN_API_KEY") ??
-      Deno.env.get("MAILGUN_CONNECTION_KEY");
-    const MAILGUN_DOMAIN = Deno.env.get("MAILGUN_DOMAIN") ??
-      "sandbox63fe3f60db3e4e89a5155aac75c4865d.mailgun.org";
+    // Mailgun credentials are configured as Supabase Edge Function secrets:
+    //   supabase secrets set MAILGUN_API_KEY=... MAILGUN_DOMAIN=...
+    const MAILGUN_API_KEY = Deno.env.get("MAILGUN_API_KEY");
+    const MAILGUN_DOMAIN = Deno.env.get("MAILGUN_DOMAIN");
+    // Mailgun EU-region accounts must use api.eu.mailgun.net instead.
+    const MAILGUN_BASE_URL = Deno.env.get("MAILGUN_BASE_URL") ?? "https://api.mailgun.net";
 
-    if (!LOVABLE_API_KEY || !MAILGUN_CONNECTION_KEY) {
+    if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN) {
+      console.error("Mailgun is not configured: missing MAILGUN_API_KEY or MAILGUN_DOMAIN");
       return new Response(
-        JSON.stringify({ error: "Mailgun connection is not configured" }),
+        JSON.stringify({ error: "Email sending is not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -70,13 +72,15 @@ Deno.serve(async (req) => {
       <p>Kind regards,<br/>Athandile Solutions</p>
     `;
 
+    // Sends an email via Mailgun's HTTP API directly (no third-party gateway).
+    // https://documentation.mailgun.com/en/latest/api-sending.html#sending
     const send = async (payload: Record<string, string>) => {
-      const response = await fetch(`${GATEWAY_URL}/${MAILGUN_DOMAIN}/messages`, {
+      const auth = btoa(`api:${MAILGUN_API_KEY}`);
+      const response = await fetch(`${MAILGUN_BASE_URL}/v3/${MAILGUN_DOMAIN}/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
-          "X-Connection-Api-Key": MAILGUN_CONNECTION_KEY,
+          Authorization: `Basic ${auth}`,
         },
         body: new URLSearchParams(payload),
       });
@@ -88,6 +92,7 @@ Deno.serve(async (req) => {
       return await response.json();
     };
 
+    // 1. Notify Athandile Solutions of the new enquiry.
     await send({
       from,
       to: ADMIN_EMAIL,
@@ -96,6 +101,7 @@ Deno.serve(async (req) => {
       html: adminHtml,
     });
 
+    // 2. Send an acknowledgement email back to the person who enquired.
     await send({
       from,
       to: email,
